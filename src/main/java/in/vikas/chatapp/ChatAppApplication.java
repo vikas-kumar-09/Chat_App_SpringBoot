@@ -11,7 +11,7 @@ public class ChatAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ChatAppApplication.class, args);
-		System.out.println("Hello SpringBoot...");
+		System.out.println("SpringBoot Started...");
 	}
 
 }
