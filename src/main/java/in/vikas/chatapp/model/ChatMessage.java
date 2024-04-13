@@ -1,8 +1,8 @@
-package in.tusharprabhu.chatapp.model;
+package in.vikas.chatapp.model;
 
 import lombok.*;
 
-import java.nio.file.FileStore;
+// import java.nio.file.FileStore;
 /**
  * Represents a chat message in the chat application.
  */

@@ -1,9 +1,10 @@
-package in.tusharprabhu.chatapp.controller;
+package in.vikas.chatapp.controller;
 
-import in.tusharprabhu.chatapp.model.ChatMessage;
 import org.springframework.messaging.handler.annotation.*;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
+
+import in.vikas.chatapp.model.ChatMessage;
 
 /**
  * Controller class for handling chat-related functionality.
