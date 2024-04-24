@@ -6,6 +6,7 @@ import lombok.*;
 /**
  * Represents a chat message in the chat application.
  */
+//  i have used the lombok to remove the boilerplate code
 @Getter
 @Setter
 @AllArgsConstructor
