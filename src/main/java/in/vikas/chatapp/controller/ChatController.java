@@ -3,6 +3,8 @@ package in.vikas.chatapp.controller;
 import org.springframework.messaging.handler.annotation.*;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import in.vikas.chatapp.model.ChatMessage;
 
@@ -36,5 +38,17 @@ public class ChatController {
     @SendTo("/topic/public")
     public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
         return chatMessage;
+    }
+     
+     /**
+     * Returns a simple message when accessed via GET request.
+     * 
+     * return A simple message.
+     */
+    // Just for checking purpose
+    @GetMapping("/hello")
+    @ResponseBody
+    public String sayHello() {
+        return "Hello from ChatController!";
     }
 }
