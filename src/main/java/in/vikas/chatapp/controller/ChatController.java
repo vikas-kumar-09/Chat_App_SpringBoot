@@ -1,19 +1,31 @@
 package in.vikas.chatapp.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.*;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
+import in.vikas.chatapp.Repository.ChatMessageRepository;
 import in.vikas.chatapp.model.ChatMessage;
 
 /**
  * Controller class for handling chat-related functionality.
  */
-@Controller
+@RestController
 public class ChatController {
 
+    @Autowired
+    private ChatMessageRepository chatMessageRepository;
+
+    @MessageMapping("/chat.send")
+    @SendTo("/topic/public")
+    public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
+        chatMessageRepository.save(chatMessage);
+        return chatMessage;
+    }
     /**
      * Registers a user for chat.
      * 
@@ -34,11 +46,12 @@ public class ChatController {
      * param chatMessage The chat message to be sent.
      * return The sent chat message.
      */
-    @MessageMapping("/chat.send")
-    @SendTo("/topic/public")
-    public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
-        return chatMessage;
-    }
+    
+    // @MessageMapping("/chat.send")
+    // @SendTo("/topic/public")
+    // public ChatMessage sendMessage(@Payload ChatMessage chatMessage) {
+    //     return chatMessage;
+    // }
      
      /**
      * Returns a simple message when accessed via GET request.
@@ -46,6 +59,7 @@ public class ChatController {
      * return A simple message.
      */
     // Just for checking purpose
+
     @GetMapping("/hello")
     @ResponseBody
     public String sayHello() {

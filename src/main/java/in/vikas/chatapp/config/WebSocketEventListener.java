@@ -2,12 +2,14 @@ package in.vikas.chatapp.config;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.event.EventListener;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
+import in.vikas.chatapp.Repository.ChatMessageRepository;
 import in.vikas.chatapp.model.ChatMessage;
 
 /**
@@ -19,8 +21,13 @@ import in.vikas.chatapp.model.ChatMessage;
 @Component
 public class WebSocketEventListener {
 
+    @SuppressWarnings("")
+    @Autowired
+    private ChatMessageRepository chatMessageRepository;
+
     private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
 
+    @SuppressWarnings("unused")
     private final SimpMessageSendingOperations messagingTemplate;
 
     public WebSocketEventListener(SimpMessageSendingOperations messagingTemplate) {
@@ -29,6 +36,7 @@ public class WebSocketEventListener {
 
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
+        // Your existing code...
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
         String username = (String) headerAccessor.getSessionAttributes().get("username");
         if (username != null) {
@@ -36,8 +44,25 @@ public class WebSocketEventListener {
             ChatMessage chatMessage = new ChatMessage();
             chatMessage.setType(ChatMessage.MessageType.LEAVE);
             chatMessage.setSender(username);
-            messagingTemplate.convertAndSend("/topic/public", chatMessage);
-        }
+
+        // Save leave message to the database
+        chatMessageRepository.save(chatMessage);
     }
+}
+
+    // @EventListener
+    // public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
+
+    //     StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
+    //     String username = (String) headerAccessor.getSessionAttributes().get("username");
+    //     if (username != null) {
+    //         logger.info("User disconnected: {}", username);
+    //         ChatMessage chatMessage = new ChatMessage();
+    //         chatMessage.setType(ChatMessage.MessageType.LEAVE);
+    //         chatMessage.setSender(username);
+
+    //         messagingTemplate.convertAndSend("/topic/public", chatMessage);
+    //     }
+    // }
 
 }
