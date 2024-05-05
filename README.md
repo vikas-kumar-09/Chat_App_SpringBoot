@@ -2,7 +2,7 @@ Realtime Chat Application using Spring Boot
 ===========================================================
 
 * * *
-**_ NOTE : Currently I am working on this deployment because facing some issues while deploying on free cloud services_**
+**_ NOTE : Currently I am working on this deployment on AWS Cloud_**
 
 **Introduction**
 

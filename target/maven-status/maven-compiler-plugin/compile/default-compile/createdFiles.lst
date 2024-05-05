@@ -1,0 +1,7 @@
+in\vikas\chatapp\model\ChatMessage.class
+in\vikas\chatapp\controller\ChatController.class
+in\vikas\chatapp\config\WebSocketEventListener.class
+in\vikas\chatapp\ChatAppApplication.class
+in\vikas\chatapp\model\ChatMessage$MessageType.class
+in\vikas\chatapp\config\WebSocketConfig.class
+in\vikas\chatapp\Repository\ChatMessageRepository.class

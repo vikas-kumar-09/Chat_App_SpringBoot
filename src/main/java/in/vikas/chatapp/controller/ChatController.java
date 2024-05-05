@@ -3,7 +3,7 @@ package in.vikas.chatapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.*;
 import org.springframework.messaging.simp.SimpMessageHeaderAccessor;
-import org.springframework.stereotype.Controller;
+// import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -59,11 +59,13 @@ public class ChatController {
      * 
      * return A simple message.
      */
-    // Just for checking purpose
 
+    // Just for checking purpose
     @GetMapping("/hello")
     @ResponseBody
     public String sayHello() {
         return "Hello from ChatController!";
     }
+
+    // sudo yum localinstall java-1.8.0-amazon-corretto*.rpm
 }
