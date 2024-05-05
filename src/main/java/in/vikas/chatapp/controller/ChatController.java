@@ -33,6 +33,7 @@ public class ChatController {
      * param headerAccessor The SimpMessageHeaderAccessor object used to access session attributes.
      * return The registered chat message.
      */
+    
     @MessageMapping("/chat.register")
     @SendTo("/topic/public")
     public ChatMessage register(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
