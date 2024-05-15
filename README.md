@@ -13,10 +13,11 @@ This project is a real-time chat application developed using Spring Boot and Web
 - User authentication
 - Sending a message without refreshing
 - Fetching message history
- <h4>UpComing Features...</h4>
+- <h4>UpComing Features...</h4>
 - showing timestamp
 - Showing Online 
 - Typing indicator
+
 
 **Technology Used**🚀
 
