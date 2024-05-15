@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.vikas.chatapp.Repository.ChatMessageRepository;
 import in.vikas.chatapp.model.ChatMessage;
+import in.vikas.chatapp.repository.ChatMessageRepository;
 
 /**
  * Controller class for handling chat-related functionality.
@@ -67,5 +67,4 @@ public class ChatController {
         return "Hello from ChatController!";
     }
 
-    // sudo yum localinstall java-1.8.0-amazon-corretto*.rpm
 }

@@ -9,8 +9,8 @@ import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-import in.vikas.chatapp.Repository.ChatMessageRepository;
 import in.vikas.chatapp.model.ChatMessage;
+import in.vikas.chatapp.repository.ChatMessageRepository;
 
 /**
  * Handles the WebSocket disconnect event.
@@ -21,13 +21,11 @@ import in.vikas.chatapp.model.ChatMessage;
 @Component
 public class WebSocketEventListener {
 
-    @SuppressWarnings("")
     @Autowired
     private ChatMessageRepository chatMessageRepository;
 
     private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
 
-    @SuppressWarnings("unused")
     private final SimpMessageSendingOperations messagingTemplate;
 
     public WebSocketEventListener(SimpMessageSendingOperations messagingTemplate) {
@@ -36,7 +34,6 @@ public class WebSocketEventListener {
 
     @EventListener
     public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
-        // Your existing code...
         StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
         String username = (String) headerAccessor.getSessionAttributes().get("username");
         if (username != null) {
@@ -45,24 +42,11 @@ public class WebSocketEventListener {
             chatMessage.setType(ChatMessage.MessageType.LEAVE);
             chatMessage.setSender(username);
 
-        // Save leave message to the database
-        chatMessageRepository.save(chatMessage);
+            // Save leave message to the database
+            chatMessageRepository.save(chatMessage);
+
+            // Uncomment the following lines if you want to send a message to "/topic/public" upon disconnect
+            // messagingTemplate.convertAndSend("/topic/public", chatMessage);
+        }
     }
-}
-
-    // @EventListener
-    // public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
-
-    //     StompHeaderAccessor headerAccessor = StompHeaderAccessor.wrap(event.getMessage());
-    //     String username = (String) headerAccessor.getSessionAttributes().get("username");
-    //     if (username != null) {
-    //         logger.info("User disconnected: {}", username);
-    //         ChatMessage chatMessage = new ChatMessage();
-    //         chatMessage.setType(ChatMessage.MessageType.LEAVE);
-    //         chatMessage.setSender(username);
-
-    //         messagingTemplate.convertAndSend("/topic/public", chatMessage);
-    //     }
-    // }
-
 }

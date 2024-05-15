@@ -28,6 +28,20 @@ body {
     background-size: cover;
 }
 
+/* Assuming this is your CSS file */
+.message {
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.from-current-user {
+    background-color: #DCF8C6; /* Light green background for messages from the current user */
+}
+
+.from-other-user {
+    background-color: #F0F0F0; /* Light grey background for messages from other users */
+}
 body:before {
     height: 50%;
     width: 100%;
@@ -57,6 +71,7 @@ body:before {
 
 .form-group {
     margin-bottom: 15px;
+    padding-bottom: 10px;
 }
 
 input {
@@ -128,6 +143,7 @@ button.accent {
     right: 0;
     margin: 0 auto;
     margin-top: -160px;
+    padding-bottom: 10px;
 }
 
 .username-page-container .username-submit {
@@ -144,7 +160,7 @@ button.accent {
     max-width: 900px;
     margin-left: auto;
     margin-right: auto;
-    box-shadow: 0 1px 11px rgba(0, 0, 0, 0.27);
+    box-shadow: 0 1px 11px rgba(17, 32, 236, 0.27);
     border-radius:5px;
     margin-top: 30px;
     height: calc(100% - 60px);
@@ -152,6 +168,15 @@ button.accent {
     position: relative;
 }
 
+/* new code */
+    .sent-message {
+        background-color: #DCF8C6; /* Light green background for sent messages */
+    }
+
+    .received-message {
+        background-color: #F0F0F0; /* Light grey background for received messages */
+    }
+/* *********** */
 #chat-page ul {
     list-style-type: none;
     margin: 0;
@@ -183,7 +208,7 @@ button.accent {
 }
 
 #chat-page .event-message p {
-    color: #faf5f5;
+    color: #0c0c0c;
     font-size: 14px;
     word-wrap: break-word;
 }
@@ -204,7 +229,7 @@ button.accent {
     vertical-align: middle;
     font-size: 18px;
     line-height: 42px;
-    color: #fff;
+    color: #ffffff;
     text-align: center;
     border-radius: 50%;
     font-style: normal;
@@ -241,7 +266,7 @@ button.accent {
 
 .chat-header h2 {
     margin: 0;
-    font-weight: 500;
+    font-weight: 600;
     color:#ffffff;
 }
 
