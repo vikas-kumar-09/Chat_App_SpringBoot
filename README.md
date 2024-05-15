@@ -13,6 +13,10 @@ This project is a real-time chat application developed using Spring Boot and Web
 - User authentication
 - Sending a message without refreshing
 - Fetching message history
+
+https://github.com/vikas-kumar-09/Chat_Application_SpringBoot/assets/71463579/ff882482-850a-4aba-919f-03def1a9b3a9
+
+
 - <h4>UpComing Features...</h4>
 - showing timestamp
 - Showing Online 
